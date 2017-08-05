@@ -13,6 +13,7 @@
 #import "TextViewController.h"
 #import "InforViewController.h"
 #import "RegViewController.h"
+#import "MyUploadViewController.h"
 @interface ViewController ()
 {
     NSTimer *myTimer;

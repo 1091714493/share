@@ -14,6 +14,7 @@
     UITextField *tf1;
     UITextView *textView;
     UILabel *placeHolderLabel;
+    UIButton *button;
 }
 
 @end
@@ -27,7 +28,6 @@
     
     
     
-    self.navigationItem.title=@"上传";
     
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.21f green:0.56f blue:0.80f alpha:0.50f]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20],NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -38,10 +38,22 @@
     
     self.view.backgroundColor=[UIColor colorWithRed:0.93f green:0.93f blue:0.93f alpha:1.00f];
     
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+    UIButton *butto=[UIButton buttonWithType:UIButtonTypeSystem];
+    [butto setImage:image forState:UIControlStateNormal];
+    [butto setTitle:@"上传" forState:UIControlStateNormal];
+    [butto setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [butto.titleLabel setFont:[UIFont systemFontOfSize:20]];
+    [butto setBackgroundColor:[UIColor colorWithRed:0.21f green:0.56f blue:0.80f alpha:1.00f]];
+    butto.imageEdgeInsets = UIEdgeInsetsMake(0.0, -20, 0.0, 0);
+    butto.frame =CGRectMake(0, 500, 100, 40);
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:butto];
+    
+    [butto addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    
+
     
     
-    UIButton *button=[UIButton buttonWithType:UIButtonTypeSystem];
+    button=[UIButton buttonWithType:UIButtonTypeSystem];
     button.frame=CGRectMake(10, 15, 210, 120) ;
     
     [button setBackgroundColor:[UIColor colorWithRed:0.84f green:0.83f blue:0.83f alpha:1.00f]];
@@ -219,10 +231,23 @@
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapME :)];
     tap.cancelsTouchesInView=NO;
     [self.view addGestureRecognizer:tap];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(receiveMessage:) name:@"1" object:nil];
 
-}-(void)button3BtnClick:(UIButton *)button
+
+}
+-(void)receiveMessage:(NSNotification *)not
 {
-    button.selected=!button.isSelected;
+    
+    NSMutableArray *array=not.object;
+    NSLog(@"%@",array[0]);
+    [button setBackgroundImage:array[0] forState:UIControlStateNormal];
+}
+
+
+-(void)button3BtnClick:(UIButton *)butto
+{
+    butto.selected=!butto.isSelected;
 }
 
 

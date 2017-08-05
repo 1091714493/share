@@ -12,7 +12,8 @@
 #import "ActViewController.h"
 #import "InforViewController.h"
 #import "VacaViewController.h"
-
+#import "MyUploadViewController.h"
+#import "LoopScrollImageView.h"
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     UITableView *tab;
@@ -41,24 +42,24 @@
     tab.dataSource=self;
     
     tab.showsVerticalScrollIndicator=NO;
-    sv=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 10, 355, 175)];
-    sv.backgroundColor=[UIColor whiteColor];
-    sv.contentSize=CGSizeMake(355*4, 175);
-    for(int i=1;i<=4;i++)
-    {
-        NSString *name=[NSString stringWithFormat:@"main_img%d",i];
-        UIImage *image=[UIImage imageNamed:name];
-        UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(355*(i-1), 0, 355, 175)];
-        imageV.image=image;
-        [sv addSubview:imageV];
-        sv.delegate=self;
-    }
-    
-    pControl=[[UIPageControl alloc]initWithFrame:CGRectMake(10, 165, 355, 10)];
-    pControl.numberOfPages=4;
-    pControl.currentPageIndicatorTintColor=[UIColor colorWithRed:0.12f green:0.27f blue:0.41f alpha:1.00f];
-    pControl.pageIndicatorTintColor=[UIColor colorWithRed:0.36f green:0.41f blue:0.47f alpha:1.00f];
-    [pControl addTarget:self action:@selector(PageCon:) forControlEvents:UIControlEventValueChanged];
+//    sv=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 10, 355, 175)];
+//    sv.backgroundColor=[UIColor whiteColor];
+//    sv.contentSize=CGSizeMake(355*4, 175);
+//    for(int i=1;i<=4;i++)
+//    {
+//        NSString *name=[NSString stringWithFormat:@"main_img%d",i];
+//        UIImage *image=[UIImage imageNamed:name];
+//        UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(355*(i-1), 0, 355, 175)];
+//        imageV.image=image;
+//        [sv addSubview:imageV];
+//        sv.delegate=self;
+//    }
+//    
+//    pControl=[[UIPageControl alloc]initWithFrame:CGRectMake(10, 165, 355, 10)];
+//    pControl.numberOfPages=4;
+//    pControl.currentPageIndicatorTintColor=[UIColor colorWithRed:0.12f green:0.27f blue:0.41f alpha:1.00f];
+//    pControl.pageIndicatorTintColor=[UIColor colorWithRed:0.36f green:0.41f blue:0.47f alpha:1.00f];
+//    [pControl addTarget:self action:@selector(PageCon:) forControlEvents:UIControlEventValueChanged];
     
 
 }
@@ -111,8 +112,12 @@
     }
     if(indexPath.section==0)
     {
-        [cell.contentView addSubview:sv];
-        [cell.contentView addSubview:pControl];
+//        [cell.contentView addSubview:sv];
+//        [cell.contentView addSubview:pControl];
+        NSArray *  imageDataSource = [NSArray arrayWithObjects:@"main_img1", @"main_img2", @"main_img3",@"main_img4",nil];
+       
+        LoopScrollImageView * loopScrollImageView =[[LoopScrollImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 130) images:imageDataSource];
+        [cell.contentView addSubview:loopScrollImageView];
     }
     else if(indexPath.section==1)
     {

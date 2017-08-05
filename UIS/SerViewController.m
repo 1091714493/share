@@ -140,6 +140,32 @@
     button18.layer.cornerRadius=3;
     [self.view addSubview:button18];
     
+    [button11 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    [button11 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button11.tag=1;
+    [button12 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    [button12 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button12.tag=2;
+    [button13 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    [button13 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button13.tag=3;
+    [button14 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    [button14 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button14.tag=4;
+    [button15 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    [button15 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button15.tag=5;
+    [button16 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    button16.tag=6;
+    [button16 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [button17 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    button17.tag=7;
+    [button17 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [button18 addTarget:self action:@selector(Click1 :) forControlEvents:UIControlEventTouchUpInside];
+    button18.tag=8;
+    [button18 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+   
+    
     UIImageView *imageV4=[[UIImageView alloc]initWithFrame:CGRectMake(
                                                                       10, 200, 75, 25)];
     imageV4.image=[UIImage imageNamed:@"but1"];
@@ -252,15 +278,93 @@
     tap.cancelsTouchesInView=NO;
     [self.view addGestureRecognizer:tap];
     
+    [button21 addTarget:self action:@selector(Click2 :) forControlEvents:UIControlEventTouchUpInside];
+    [button21 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button21.tag=21;
+    [button22 addTarget:self action:@selector(Click2 :) forControlEvents:UIControlEventTouchUpInside];
+    [button22 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button22.tag=22;
+
+    [button23 addTarget:self action:@selector(Click2 :) forControlEvents:UIControlEventTouchUpInside];
+    [button23 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button23.tag=23;
+
+    [button24 addTarget:self action:@selector(Click2 :) forControlEvents:UIControlEventTouchUpInside];
+    [button24 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button24.tag=24;
+
+    [button31 addTarget:self action:@selector(Click3 :) forControlEvents:UIControlEventTouchUpInside];
+    [button31 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button31.tag=31;
+    [button32 addTarget:self action:@selector(Click3 :) forControlEvents:UIControlEventTouchUpInside];
+    [button32 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button32.tag=32;
+    
+    [button33 addTarget:self action:@selector(Click3 :) forControlEvents:UIControlEventTouchUpInside];
+    [button33 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button33.tag=33;
+    
+    [button34 addTarget:self action:@selector(Click3 :) forControlEvents:UIControlEventTouchUpInside];
+    [button34 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    button34.tag=34;
 
 }
+
 
 -(void)tapME:(UITapGestureRecognizer *)tap
 {
     [self.view endEditing:YES];
 }
 
+-(void)Click1 :(UIButton *)btn
+{
+    for(int i=1;i<9;i++)
+    {
+        if(btn.tag==i){
+            btn.selected=YES;
+            [btn setBackgroundColor:[UIColor colorWithRed:0.21f green:0.56f blue:0.80f alpha:1.00f]];
+            [btn setTintColor:[UIColor clearColor]];
+            continue;
+        }
+        UIButton *but =(UIButton *)[self.view viewWithTag:i];
+        [but setBackgroundColor:[UIColor whiteColor]];
+        [but setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        but.selected=NO;
+    }
+}
+-(void)Click2 :(UIButton *)btn
+{
+    for(int i=21;i<25;i++)
+    {
+        if(btn.tag==i){
+            btn.selected=YES;
+            [btn setBackgroundColor:[UIColor colorWithRed:0.21f green:0.56f blue:0.80f alpha:1.00f]];
+            [btn setTintColor:[UIColor clearColor]];
+            continue;
+        }
+        UIButton *but =(UIButton *)[self.view viewWithTag:i];
+        [but setBackgroundColor:[UIColor whiteColor]];
+        [but setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        but.selected=NO;
+    }
+}
 
+-(void)Click3 :(UIButton *)btn
+{
+    for(int i=31;i<35;i++)
+    {
+        if(btn.tag==i){
+            btn.selected=YES;
+            [btn setBackgroundColor:[UIColor colorWithRed:0.21f green:0.56f blue:0.80f alpha:1.00f]];
+            [btn setTintColor:[UIColor clearColor]];
+            continue;
+        }
+        UIButton *but =(UIButton *)[self.view viewWithTag:i];
+        [but setBackgroundColor:[UIColor whiteColor]];
+        [but setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        but.selected=NO;
+    }
+}
 
 -(void)goBack
 {
